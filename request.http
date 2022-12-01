@@ -1,0 +1,57 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"herry",
+    "password": "herry"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username":"herry",
+    "password": "dooo"
+}
+
+###
+POST http://localhost:5000/api/auth/logout
+Content-Type: application/json
+
+{
+    "username":"herry",
+    "password": "dooo"
+}
+
+###
+POST http://localhost:5000/api/auth/protected
+
+Authorization:  Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzc5YjlkYWExNzc3YWQ2OGQxYjk5MTIiLCJpYXQiOjE2Njg5Mzg1NDIsImV4cCI6MTY2ODkzOTQ0Mn0.YWGgkn63yMWirbNYQp0lBU-Wlq5eSWlg0_FuyJw190k
+Content-Type: application/json
+
+{
+    "username":"herry",
+    "password": "herry"
+}
+###
+POST http://localhost:5000/api/auth/refresh_token
+Content-Type: application/json
+
+{
+    "username":"herry",
+    "password": "herry"
+}
+
+###
+GET http://localhost:5000/api/user/cart
+
+
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzc5YjlkYWExNzc3YWQ2OGQxYjk5MTIiLCJpYXQiOjE2Njg5Mzk5OTksImV4cCI6MTY2ODk0MDg5OX0.2kEcDBiaLVcMgU6j1z48ngVjNRna3-wgrJepTQFI_Kg
+
+{
+    "username":"herry",
+    "password": "herry",
+    "newpass": "dooo"
+}
