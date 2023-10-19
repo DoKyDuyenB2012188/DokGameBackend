@@ -38,14 +38,14 @@ exports.getFilter = async (req, res) => {
       result = await App.find({
         genres: { $elemMatch: { description: filter[0].value } },
       });
-    } else if (filter[0].label == "platforms") {
+    } else if (filter[0].label == "platform") {
       let query = {};
       if (filter[0].value == "windows") {
-        query = { "platforms.windows": "true" };
+        query = { "platform.windows": "true" };
       } else if (filter[0].value == "linux") {
-        query = { "platforms.linux": "true" };
+        query = { "platform.linux": "true" };
       } else if (filter[0].value == "mac") {
-        query = { "platforms.mac": "true" };
+        query = { "platform.mac": "true" };
       }
       result = await App.find(query);
     } else if (filter[0].label == "release") {
@@ -60,25 +60,25 @@ exports.getFilter = async (req, res) => {
       });
     }
   } else if (filter.length == 2) {
-    // genres & platforms
+    // genres & platform
     // genres & release
-    // platforms & release
-    if (filter[0].label == "genres" && filter[1].label == "platforms") {
+    // platform & release
+    if (filter[0].label == "genres" && filter[1].label == "platform") {
       let query = {};
       if (filter[1].value == "windows") {
         query = {
           genres: { $elemMatch: { description: filter[0].value } },
-          "platforms.windows": "true",
+          "platform.windows": "true",
         };
       } else if (filter[1].value == "linux") {
         query = {
           genres: { $elemMatch: { description: filter[0].value } },
-          "platforms.linux": "true",
+          "platform.linux": "true",
         };
       } else if (filter[1].value == "mac") {
         query = {
           genres: { $elemMatch: { description: filter[0].value } },
-          "platforms.mac": "true",
+          "platform.mac": "true",
         };
       }
       result = await App.find(query);
@@ -94,14 +94,14 @@ exports.getFilter = async (req, res) => {
         let year = Number(el.release_date.date.split(" ")[2]);
         if (year >= min && year <= max) return el;
       });
-    } else if (filter[0].label == "platforms" && filter[1].label == "release") {
+    } else if (filter[0].label == "platform" && filter[1].label == "release") {
       let query = {};
       if (filter[0].value == "windows") {
-        query = { "platforms.windows": "true" };
+        query = { "platform.windows": "true" };
       } else if (filter[0].value == "linux") {
-        query = { "platforms.linux": "true" };
+        query = { "platform.linux": "true" };
       } else if (filter[0].value == "mac") {
-        query = { "platforms.mac": "true" };
+        query = { "platform.mac": "true" };
       }
       result = await (
         await App.find(query)
@@ -120,17 +120,17 @@ exports.getFilter = async (req, res) => {
     if (filter[1].value == "windows") {
       query = {
         genres: { $elemMatch: { description: filter[0].value } },
-        "platforms.windows": "true",
+        "platform.windows": "true",
       };
     } else if (filter[1].value == "linux") {
       query = {
         genres: { $elemMatch: { description: filter[0].value } },
-        "platforms.linux": "true",
+        "platform.linux": "true",
       };
     } else if (filter[1].value == "mac") {
       query = {
         genres: { $elemMatch: { description: filter[0].value } },
-        "platforms.mac": "true",
+        "platform.mac": "true",
       };
     }
     result = await (
